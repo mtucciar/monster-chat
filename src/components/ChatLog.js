@@ -2,9 +2,15 @@ import React, { Component, PropTypes } from 'react';
 
 export default class ChatLog extends Component {
 
+  static propTypes = {
+    chatLog: PropTypes.object.isRequired,
+    dispatch: PropTypes.func.isRequired
+  }
+
   render() {
 
-    const chatList = [{user: "USER 1", message: "Hello World!"}, {user: "USER 2", message: "This is so cool!"}];
+    const { chatLog: { chatLog }, dispatch } = this.props;
+
     var chatStyle = {
       border: 'solid black 1px'
     }
@@ -15,7 +21,7 @@ export default class ChatLog extends Component {
           <div style={chatStyle} className="panel radius">
             <h5>Chat Log</h5>
             <hr/>
-            {chatList.map(userMessage => <p>{userMessage.user}: {userMessage.message}</p>)}
+            {this.props.chatLog.map(userMessage => <p>{userMessage.user}: {userMessage.message}</p>)}
           </div>
         </div>
       </div>

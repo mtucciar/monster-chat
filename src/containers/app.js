@@ -2,12 +2,11 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { combineReducers } from 'redux';
 import { Provider } from 'react-redux';
-
 import MonsterChat from './MonsterChat';
-// import * as reducers from '../reducers';
+import * as reducers from '../reducers';
 
-// const reducer = combineReducers(reducers);
-// const store = createStore(reducer);
+const reducer = combineReducers(reducers);
+const store = createStore(reducer);
 
 export default class App extends Component {
   render() {

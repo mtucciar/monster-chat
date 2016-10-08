@@ -2,9 +2,12 @@ import React, { Component, PropTypes } from 'react';
 
 export default class SendMessage extends Component {
 
-  render() {
+  static propTypes = {
+    userName: PropTypes.object.isRequired,
+    dispatch: PropTypes.func.isRequired
+  }
 
-    var user = "USER1"
+  render() {
 
     var userMessageContainerStyle = {
       display: 'inline-block',
@@ -40,7 +43,7 @@ export default class SendMessage extends Component {
       <div className="row">
         <div style={userMessageContainerStyle} className="small-8 small-offset-2 columns end">
           <div style={userNameStyle}>
-            <h5 style={{marginLeft: '15px'}}>{user}</h5>
+            <h5 style={{marginLeft: '15px'}}>{this.props.userName}</h5>
           </div>
           <div>
             <input style={messageContainerStyle} type="text" />
