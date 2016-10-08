@@ -11,20 +11,21 @@ export default class SendMessage extends Component {
       marginTop: '20px',
       border: 'solid black 1px',
       borderRadius: '15px',
-      width: '400px'
+      padding: '0'
     }
 
     var userNameStyle = {
       background: 'grey',
       color: 'white',
-      marginTop: '-19px',
+      width: '100%',
+      marginTop: '-3px',
       borderTopLeftRadius: '13px',
       borderTopRightRadius: '13px',
     }
 
     var messageContainerStyle = {
       width: '90%',
-      height: '200px',
+      height: '100px',
       marginLeft: '15px',
       marginBottom: '15px'
     }
@@ -36,14 +37,16 @@ export default class SendMessage extends Component {
     }
 
     return (
-      <div style={userMessageContainerStyle}>
-        <div style={userNameStyle}>
-          <h3 style={{marginLeft: '15px'}}>{user}</h3>
+      <div className="row">
+        <div style={userMessageContainerStyle} className="small-8 small-offset-2 columns end">
+          <div style={userNameStyle}>
+            <h5 style={{marginLeft: '15px'}}>{user}</h5>
+          </div>
+          <div>
+            <input style={messageContainerStyle} type="text" />
+          </div>
+          <button style={buttonStyle} className="button small radius">Send Message</button>
         </div>
-        <div>
-          <input style={messageContainerStyle} type="text" />
-        </div>
-        <button style={buttonStyle}>Send Message</button>
       </div>
     );
   }

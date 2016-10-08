@@ -23,10 +23,13 @@ export default class MonsterChat extends Component {
     // const actions = bindActionCreators(UserActions, dispatch);
 
     return (
-      <div>
-      <AddUserInput/>
-      <SendMessage/>
-      <ChatLog/>
+      <div className="row">
+        <div className="small-6 columns">
+          <AddUserInput/>
+        </div>
+        <div className="small-5 columns end">
+          <ChatLog/>
+        </div>
       </div>
     );
   }
