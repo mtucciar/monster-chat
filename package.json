@@ -2,6 +2,8 @@
   "name": "monster-chat",
   "version": "1.0.0",
   "description": "Monster Chat",
+  "repository": "https://github.com/mtucciar/monster-chat",
+  "license": "MIT",
   "homepage": "",
   "scripts": {
     "start": "node server.js"
