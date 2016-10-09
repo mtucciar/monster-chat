@@ -1,16 +1,15 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './containers/App';
+import React from 'react'
+import { render } from 'react-dom'
+import { Provider } from 'react-redux'
+import { createStore } from 'redux'
+import monsterChatApp from './reducers'
+import MonsterChat from './components/MonsterChat'
 
+let store = createStore(monsterChatApp)
 
-function run() {
-  ReactDOM.render(<App />, document.getElementById('root'));
-}
-
-const loadedStates = ['complete', 'loaded', 'interactive'];
-
-if (loadedStates.includes(document.readyState) && document.body) {
-  run();
-} else {
-  window.addEventListener('DOMContentLoaded', run, false);
-}
+render(
+  <Provider store={store}>
+    <MonsterChat />
+  </Provider>,
+  document.getElementById('root')
+)

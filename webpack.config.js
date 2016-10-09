@@ -1,39 +1,45 @@
 var path = require('path');
 var webpack = require('webpack');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var devFlagPlugin = new webpack.DefinePlugin({
-  __DEV__: JSON.stringify(JSON.parse(process.env.DEBUG || 'false'))
-});
 
-module.exports = {
-  devtool: 'eval',
-  entry: [
-    'webpack-dev-server/client?http://localhost:3000',
-    'webpack/hot/only-dev-server',
-    './src/index'
-  ],
+var BUILD_DIR = path.resolve(__dirname, 'dist');
+var APP_DIR = path.resolve(__dirname, 'src');
+
+var config = {
+  entry: {
+    path: APP_DIR + '/index',
+    lib: ['react', 'react-dom']
+  },
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'bundle.js',
-    publicPath: '/static/'
-  },
-  plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin(),
-    devFlagPlugin,
-    new ExtractTextPlugin('app.css')
-  ],
-  module: {
-    loaders: [
-      {
-        test: /\.jsx?$/,
-        loaders: ['react-hot', 'babel'],
-        include: path.join(__dirname, 'src')
-      },
-      { test: /\.css$/, loader: ExtractTextPlugin.extract('css-loader?module!cssnext-loader') }
-    ]
+    publicPath: '/static/',
   },
   resolve: {
-    extensions: ['', '.js', '.json']
+    extensions: ['', '.js', '.jsx'],
+    modulesDirectories: ['node_modules']
+  },
+  module: {
+    loaders : [
+      {
+      test: /\.jsx?$/,
+      loader: 'babel-loader',
+      exclude: /node_modules/,
+      query: {
+          presets: ['es2015', 'react'],
+          plugins: ["transform-object-rest-spread"]
+        }
+      },
+      {
+        test : /\.jsx?/,
+        include : APP_DIR,
+        loaders: ['react-hot', 'babel?cacheDirectory']
+      }
+
+    ],
+    plugins: [
+      new webpack.HotModuleReplacementPlugin()
+    ]
   }
 };
+
+module.exports = config;

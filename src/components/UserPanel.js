@@ -1,11 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 
-export default class SendMessage extends Component {
-
-  static propTypes = {
-    userName: PropTypes.object.isRequired,
-    dispatch: PropTypes.func.isRequired
-  }
+export default class UserPanel extends Component {
 
   render() {
 
@@ -53,4 +48,8 @@ export default class SendMessage extends Component {
       </div>
     );
   }
+}
+
+UserPanel.propTypes = {
+  userName: PropTypes.object.isRequired
 }

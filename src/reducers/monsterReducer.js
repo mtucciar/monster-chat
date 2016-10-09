@@ -2,17 +2,17 @@ import * as types from '../constants/UserActionTypes';
 
 const initialState = {
   users: [1],
-  usersById: {
-    1: {
-    id: "1",
-    name: 'theCoolestUser'}
-  },
-  chatLog: [{name: "theCoolestUser", message: "hello!"}]
+  usersById: [
+    {
+      id: '1',
+      name: 'theCoolestUser'
+    }
+  ],
+  chatLog: [{messageNum: '1', name: 'theCoolestUser', message: 'hello'}]
 };
 
-export default function users(state = initialState, action) {
+const monsterReducer = (state = initialState, action) => {
   switch (action.type) {
-
     case types.ADD_USER:
       const newId = state.users[state.users.length-1] + 1;
       return {
@@ -26,7 +26,6 @@ export default function users(state = initialState, action) {
           }
         },
       }
-
     case types.ADD_MESSAGE:
       return {
         ...state,
@@ -38,8 +37,9 @@ export default function users(state = initialState, action) {
           }
         ]
       }
-
     default:
       return state;
   }
 }
+
+export default monsterReducer
