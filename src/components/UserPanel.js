@@ -34,14 +34,15 @@ let UserPanel = ({ dispatch, userName }) => {
               input.value = ''
           }}>
             <div>
-              <input style={{
+              <textarea style={{
                 width: '90%',
                 height: '100px',
                 marginLeft: '15px',
-                marginBottom: '15px'
+                marginBottom: '15px',
+                resize: 'none'
               }} ref={node => {
             input = node
-                }} />
+          }}></textarea>
             </div>
             <button style={{
               display: 'block',

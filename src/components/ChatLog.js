@@ -6,7 +6,7 @@ const ChatLog = ({ logMessages }) => (
           <div style={{border: 'solid black 1px'}} className="panel radius">
             <h5>Chat Log</h5>
             <hr/>
-            {logMessages.map(userMessage => <p>{userMessage.name}: {userMessage.message}</p>)}
+            {logMessages.map(userMessage => <p style={{textOverflow: 'wrap', wordWrap: 'break-word'}}>{userMessage.name}: {userMessage.message}</p>)}
           </div>
         </div>
       </div>
