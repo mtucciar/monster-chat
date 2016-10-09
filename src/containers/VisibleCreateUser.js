@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { addUser } from '../actions/UserActions'
-import AddUserInput from '../components/AddUserInput'
+import CreateUser from '../components/CreateUser'
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
@@ -11,9 +11,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   }
 }
 
-const AddUser = connect(
+const VisibleCreateUser = connect(
   null,
   mapDispatchToProps
-)(AddUserInput)
+)(CreateUser)
 
-export default AddUser
+export default VisibleCreateUser

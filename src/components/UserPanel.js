@@ -26,29 +26,29 @@ let UserPanel = ({ dispatch, userName }) => {
             <h5 style={{marginLeft: '15px'}}>{userName}</h5>
           </div>
           <form onSubmit={e => {
-        e.preventDefault()
-        if (!input.value.trim()) {
-          return
-        }
-        dispatch(addMessage(userName, input.value))
-        input.value = ''
-      }}>
-          <div>
-            <input style={{
-              width: '90%',
-              height: '100px',
-              marginLeft: '15px',
-              marginBottom: '15px'
-            }} ref={node => {
-          input = node
-              }} />
-          </div>
-          <button style={{
-            display: 'block',
-            marginLeft: 'auto',
-            marginRight: '15px'
-          }} className="button small radius" type="submit">Send Message</button>
-      </form>
+              e.preventDefault()
+              if (!input.value.trim()) {
+                  return
+              }
+              dispatch(addMessage(userName, input.value))
+              input.value = ''
+          }}>
+            <div>
+              <input style={{
+                width: '90%',
+                height: '100px',
+                marginLeft: '15px',
+                marginBottom: '15px'
+              }} ref={node => {
+            input = node
+                }} />
+            </div>
+            <button style={{
+              display: 'block',
+              marginLeft: 'auto',
+              marginRight: '15px'
+            }} className="button small radius" type="submit">Send Message</button>
+          </form>
         </div>
       </div>
     )
