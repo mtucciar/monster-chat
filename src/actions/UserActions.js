@@ -10,6 +10,7 @@ export function addUser(name) {
 export function addMessage(name, message) {
   return {
     type: types.ADD_MESSAGE,
-    id
+    name,
+    message
   };
 }

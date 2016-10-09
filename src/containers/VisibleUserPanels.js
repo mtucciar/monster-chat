@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { addUser } from '../actions/UserActions'
+import { addMessage } from '../actions/UserActions'
 import UserPanels from '../components/UserPanels'
 
 const mapStateToProps = (state) => {
@@ -11,8 +11,17 @@ const mapStateToProps = (state) => {
   }
 }
 
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    addMessageClick: (name, message) => {
+      dispatch(addMessage(name, message))
+    }
+  }
+}
+
 const VisibleUserPanels = connect(
-  mapStateToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(UserPanels)
 
 export default VisibleUserPanels

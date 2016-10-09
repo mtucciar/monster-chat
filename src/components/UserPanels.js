@@ -1,16 +1,16 @@
 import React, { PropTypes } from 'react'
-import VisibleUserPanel from '../containers/VisibleUserPanel'
+import UserPanel from '../components/UserPanel'
 
 const UserPanels = ({ users, addMessageClick }) => (
-  <ul>
+  <div>
     {users.map(user =>
-      <VisibleUserPanel
+      <UserPanel
         key={user.id}
-        {...user}
-        onClick={() => addMessageClick(user.userMessage)}
+        userName={user.name}
+        onClick={() => addMessageClick(user.name, user.userMessage)}
       />
     )}
-  </ul>
+  </div>
 )
 
 UserPanels.propTypes = {

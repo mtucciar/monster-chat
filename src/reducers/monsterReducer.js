@@ -18,21 +18,23 @@ const monsterReducer = (state = initialState, action) => {
       return {
         ...state,
         users: state.users.concat(newId),
-        usersById: {
+        usersById: [
           ...state.usersById,
-          [newId]: {
+          {
             id: newId,
             name: action.name
           }
-        },
+        ],
       }
     case types.ADD_MESSAGE:
+    const messageNum = state.chatLog.length + 1;
       return {
         ...state,
         chatLog: [
-          ...state,
+          ...state.chatLog,
           {
-            user: action.name,
+            messageNum: messageNum,
+            name: action.name,
             message: action.message
           }
         ]
