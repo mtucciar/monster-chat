@@ -14,3 +14,11 @@ export function addMessage(name, message) {
     message
   };
 }
+
+export function addResponse(name, message) {
+  return {
+    type: types.ADD_RESPONSE,
+    name,
+    message
+  };
+}

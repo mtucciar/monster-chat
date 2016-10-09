@@ -5,6 +5,7 @@ import VisibleUserPanels  from '../containers/VisibleUserPanels';
 
 const MonsterChat = () => (
       <div>
+        <img style={{position: 'fixed'}} src="../content/logo.jpg"/>
         <h1 style={{textAlign: 'center',marginBottom: '25px'}}>Monster Chat</h1>
           <div className="row">
             <div className="small-6 columns">

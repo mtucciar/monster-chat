@@ -6,7 +6,7 @@ const ChatLog = ({ logMessages }) => (
           <div style={{border: 'solid black 1px'}} className="panel radius">
             <h5>Chat Log</h5>
             <hr/>
-            {logMessages.map(userMessage => <p style={{textOverflow: 'wrap', wordWrap: 'break-word'}}>{userMessage.name}: {userMessage.message}</p>)}
+            {logMessages.map(userMessage => <p key={userMessage.messageNum} style={{textOverflow: 'wrap', wordWrap: 'break-word'}}>{userMessage.name}: {userMessage.message}</p>)}
           </div>
         </div>
       </div>
@@ -14,7 +14,7 @@ const ChatLog = ({ logMessages }) => (
 
 ChatLog.propTypes = {
   logMessages: PropTypes.arrayOf(PropTypes.shape({
-    messageNum: PropTypes.string.isRequired,
+    messageNum: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
     message: PropTypes.string.isRequired
   }).isRequired).isRequired
