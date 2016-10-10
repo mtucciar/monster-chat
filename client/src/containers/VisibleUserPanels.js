@@ -4,8 +4,6 @@ import { addMessage } from '../actions/UserActions'
 import UserPanels from '../components/UserPanels'
 
 const mapStateToProps = (state) => {
-  console.log(state);
-  console.log('asd');
   return {
     users: state.monsterReducer.usersById
   }

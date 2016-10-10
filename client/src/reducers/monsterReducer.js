@@ -2,13 +2,8 @@ import * as types from '../constants/UserActionTypes';
 
 const initialState = {
   users: [1],
-  usersById: [
-    {
-      id: '1',
-      name: 'theCoolestUser'
-    }
-  ],
-  chatLog: [{messageNum: 1, name: 'theCoolestUser', message: 'hello'}]
+  usersById: [],
+  chatLog: []
 };
 
 const monsterReducer = (state = initialState, action) => {

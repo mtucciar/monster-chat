@@ -31,7 +31,7 @@ let UserPanel = ({ dispatch, userName }) => {
                   return
               }
               dispatch(addMessage(userName, input.value))
-              input.value = ''
+              input.value = '';
           }}>
             <div>
               <textarea style={{

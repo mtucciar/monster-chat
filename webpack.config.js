@@ -24,11 +24,15 @@ var reactHotAndBabelLoader = {
 var clientConfig = {
   target: 'web',
   context: CLIENT_DIR,
-  entry: './index.js',
+  entry: [
+      CLIENT_DIR + '/index.js',
+      'webpack/hot/dev-server',
+      'webpack-dev-server/client?http://localhost:8081'
+  ],
   output: {
     path: DIST_DIR,
     filename: 'bundle.js',
-    publicPath: '/static/',
+    publicPath: "http://localhost:8081/assets/"
   },
   resolve: {
     extensions: ['', '.js', '.jsx'],
@@ -45,9 +49,11 @@ var clientConfig = {
 var serverConfig = {
   target:'node',
   context: CLIENT_DIR,
-  entry: {
-    app: './index.js'
-  },
+  entry: [
+      './index.js',
+      'webpack/hot/dev-server',
+      'webpack-dev-server/client?http://localhost:8081'
+  ],
   output: {
     path: SERVER_DIR,
     filename: 'server.js'
