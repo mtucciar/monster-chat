@@ -15,7 +15,7 @@ const UserPanels = ({ users, addMessageClick }) => (
 
 UserPanels.propTypes = {
   users: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
   }).isRequired).isRequired,
   addMessageClick: PropTypes.func.isRequired

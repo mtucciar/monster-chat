@@ -1,15 +1,12 @@
 import * as types from '../constants/UserActionTypes';
 
 const initialState = {
-  users: [1],
+  users: [],
   usersById: [],
   chatLog: []
 };
 
 const monsterReducer = (state = initialState, action) => {
-  console.log('zxczxc');
-  console.log(state);
-  console.log(action);
   switch (action.type) {
     case types.ADD_USER:
       const newId = state.users[state.users.length-1] + 1;

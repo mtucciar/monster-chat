@@ -9,7 +9,7 @@ export function chatMiddleware(store) {
   return next => action => {
     const result = next(action);
     if (socket && action.type === actions.ADD_MESSAGE) {
-      console.log('client: socket catching message');
+      console.log('Client: user sending message');
       let chatLog = store.getState().monsterReducer.chatLog;
       console.log(chatLog);
       socket.emit('recieve message', chatLog[chatLog.length -1]);
@@ -20,15 +20,15 @@ export function chatMiddleware(store) {
 }
 
 export default function (store) {
-  console.log('setting up client connection');
+  console.log('Client: setting up client connection');
   socket = io.connect('localhost:3000');
 
   socket.on('disconnect', function(){
-    console.log('client: user disconnected');
+    console.log('Client: user disconnected');
   });
 
   socket.on('new message', function(msg){
-    console.log('client: recieved message: ' + msg.messageNum + ": " + msg.name + ": " + msg.message);
+    console.log('Client: recieved message: ' + msg.messageNum + ": " + msg.name + ": " + msg.message);
     store.dispatch(addResponse(msg.name, msg.message));
   });
 

@@ -1,7 +1,6 @@
 var webpack = require('webpack');
 var WebpackDevServer = require('webpack-dev-server');
 var config = require('./webpack.config');
-
 var express = require('express');
 var proxy = require('proxy-middleware');
 var url = require('url');
@@ -20,12 +19,13 @@ var userId = 0;
 const connections = [];
 
 io.on('connection', function(socket){
-  console.log('user connected');
   connections.push(socket);
   userId += 1;
 
+  console.log('Server: User ' + userId + ' connected');
+
   socket.on('recieve message', msg => {
-    console.log('incoming message to server: ' + msg.name + ": " + msg.message);
+    console.log('Server: incoming message: ' + msg.name + ": " + msg.message);
       connections.forEach(connectedSocket => {
         if (connectedSocket !== socket) {
           connectedSocket.emit('new message', msg);
@@ -34,7 +34,7 @@ io.on('connection', function(socket){
     });
 
     socket.on('disconnect', () => {
-      console.log('user disconnected');
+      console.log('Server: User ' + userId + ' disconnected');
       const index = connections.indexOf(socket);
       connections.splice(index, 1);
     });
@@ -53,5 +53,5 @@ var server = new WebpackDevServer(webpack(config.clientConfig), {
 server.listen(8081, "localhost", function() {});
 app.listen(8083);
 http.listen(3000, function(){
-  console.log('listening on *:3000');
+  console.log('Socket.IO listening on *:3000');
 });

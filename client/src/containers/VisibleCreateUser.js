@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { addUser } from '../actions/UserActions'
 import CreateUser from '../components/CreateUser'
 
-const mapDispatchToProps = (dispatch, ownProps) => {
+const mapDispatchToProps = (dispatch, name) => {
   return {
     onClick: (name) => {
       dispatch(addUser(name))
